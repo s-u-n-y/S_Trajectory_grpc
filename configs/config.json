@@ -1,0 +1,6 @@
+{
+    "parameters": null,
+    "inputs": {"q0": 0.323, "q1": -0.298, "v0": 0, "v1": 0, "vmax": 0.2, "amax": 0.5, "jmax": 1},
+    "outputs": {"path": "./result", "filenames": ["trajectory.jpg"]},
+    "model_flag": "7070"
+}

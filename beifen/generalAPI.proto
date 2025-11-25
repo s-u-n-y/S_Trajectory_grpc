@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message general_request{
+  string json_input = 1;
+  string data_set = 2;
+  string obj_set = 3;
+  string model_flag = 4;
+}
+
+message general_response{
+  string json_output = 1;
+  string string_output1 = 2;
+  string string_output2 = 3;
+  string string_output3 = 4;
+}
+
+service generalAPI{
+  rpc remote_call(general_request) returns(general_response);
+}
+
+//python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. ./pb/generalAPI.proto

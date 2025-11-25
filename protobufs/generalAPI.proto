@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+message general_request{
+  string parameters = 1;
+  string inputs = 2;
+  string outputs = 3;
+  string model_flag = 4;
+}
+
+message general_response{
+  string json_output = 1;
+  string model_description = 2;
+  bool upload_or_not = 3;
+}
+
+message upload_request {
+  string filename = 1;
+}
+
+message upload_response {
+    bytes data = 1;
+}
+
+// 新增：client向server上传文件的消息定义
+message client_upload_request {
+  string filename = 1;
+  bytes data = 2;
+}
+
+message client_upload_response {
+  bool success = 1;
+  string message = 2;
+}
+
+service generalAPI{
+  rpc remote_call(general_request) returns(general_response);
+  rpc upload_file(upload_request) returns(stream upload_response);
+  rpc client_upload_file(stream client_upload_request) returns(client_upload_response);
+}
+// uv add grpcio-tools
+//python -m grpc_tools.protoc -I ./protobufs --python_out=. --grpc_python_out=. ./protobufs/generalAPI.proto

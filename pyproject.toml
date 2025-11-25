@@ -1,0 +1,19 @@
+[project]
+name = "trajectory-grpc-service"
+version = "0.1.0"
+description = "S-curve trajectory planning gRPC service"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "grpcio>=1.62.0",
+    "grpcio-tools>=1.62.0",
+    "numpy>=1.26.0",
+    "matplotlib>=3.5.0",
+    "protobuf>=4.25.0"
+]
+
+[project.scripts]
+trajectory-server = "server:run"
+trajectory-client = "client:run"
+
+[tool.uv.sources]
